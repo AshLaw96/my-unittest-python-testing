@@ -1,19 +1,17 @@
-def even_number_of_evens(numbers):
+def even_number_of_evens(numbers: list) -> bool:
     """
-    Should Raise a TypeError if a list in not passed into the function
-    error message: "A list was not passed into the function"
-    if the list is empty it will return False
-    if the number of even numbers is odd - return False
-    if the numner of even numbers is even - return True
+    Checks if there is an even number of even numbers in a list.
+    Args:
+        numbers (list): List of integers to check.
+    Raises:
+        TypeError: If the argument is not a list.
+    Returns:
+        bool: True if the number of even numbers is even and greater than 0, False otherwise.
     """
-    if isinstance(numbers, list):
-        evens = sum([1 for n in numbers if n % 2 == 0])
-        
-        return True if evens and evens % 2 == 0 else False
-
-    else:
+    if not isinstance(numbers, list):
         raise TypeError("A list was not passed into the function")
-    return None
-
-if __name__ == "__main__":
-    print(even_number_of_evens([2, 1, 4]))
+    
+    evens = sum(1 for n in numbers if n % 2 == 0)
+    
+    # Return True if evens count is non-zero and even, otherwise False
+    return evens > 0 and evens % 2 == 0
